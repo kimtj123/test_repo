@@ -1,148 +1,26 @@
-h3:hover   
-{ 
-    text-decoration:underline; 
-    color: blue; 
-}
-input
+body
 {
-    width : 150px;
-    height : 30px;
-    font-size : 18px;
-}
-textarea
-{
-    font-size : 18px;
+    background-color: skyblue;
 }
 
-/***************************************************************************************************************************************************************************/
-
-#content
+#header
 {
-    width : 840px;
-    height : 600px;
-    border-style: solid; 
-    border-width: 1px 1px;  /*상하・좌우*/
-    border-color: gray;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
+    border: solid;
+    height: 20vh;
+    margin : auto;
+    width: 80vw;
+}
+#body
+{
+    border: solid;
+    height: 40vh;
+    margin : auto;
+    width: 80vw;
 }
 #footer
 {
-    margin-top : 35%;
-    height : 100%;
-    width : 100%;
-    text-align: center;
-    bottom: 5%;
-}
-#footer-rerocate
-{
-    margin-top : 2%;
-    height : 100%;
-    width : 100%;
-    text-align: center;
-    bottom: 5%;
-}
-#menu
-{
-    text-align: center;
-}
-#title
-{
-    text-align: center;
-    font-size: 70px;
-    margin-bottom: 20px;
-}
-#submit
-{
-    background-color: #ea4f37; 
-    border-color: #ea4f37; 
-    color : white;
+    border: solid;
+    height: 30vh;
     margin : auto;
-    text-align: center;
-    width : 70%;
-    margin-top : 30px;
-    padding-top: 15px;
-    height: 40px;
-    font-size: 20px;
-}
-#submit:active
-{
-    top: 3px; 
-    outline: none; 
-    -webkit-box-shadow: none; 
-    box-shadow: none;
-}
-#submit:hover
-{
-    background-color:#e0d48e;
-}
-
-/***************************************************************************************************************************************************************************/
-
-.contentInput
-{
-    margin-top : 5px;
-    margin-left : 30px; 
-}
-.clickWord
-{
-    margin-left : 30px;
-}
-.footer-buttons
-{
-    background-color: #ea4f37; 
-    border-color: #ea4f37; 
-    color : white;
-    display: inline-block;
-    margin : auto;
-    text-align: center;
-    width : 45%;
-    margin-left : 2.5%;
-    margin-right : 2.5%;
-    margin-top : 30px;
-    padding-top: 15px;
-    height: 40px;
-    font-size: 20px;
-}
-.footer-buttons:active
-{
-    top: 3px; 
-    outline: none; 
-    -webkit-box-shadow: none; 
-    box-shadow: none;
-}
-.footer-buttons:hover
-{
-    background-color:#e0d48e;
-}
-
-.menuButtons
-{
-    width: 269.3px;
-    height: 70px;
-    vertical-align: center;
-    background-color: #32AAFF;
-    border: none;
-    border-radius:0.5em;
-    color:#fff;
-    padding: 3px 0;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 25px;
-    margin-left: 15px;
-    margin-top: 15px;
-    cursor: pointer;
-    line-height:125%;
-    letter-spacing:3px;
-}
-.menuButtons:hover
-{
-    background-color:#a1e08e;
-}
-.titleInput
-{
-    margin-top : 15px;
-    margin-left : 30px; 
+    width: 80vw;
 }
