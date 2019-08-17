@@ -3,7 +3,7 @@ body
     background-color: skyblue;    
 }
 #bigSymbol {
-    width: 10vw;
+    width: 17vh;
 }
 
 #middle {
@@ -19,34 +19,33 @@ body
     width : 76vw;
 }
 
-#middleSym {
+#middleSym {    
     text-align: right;
-    display : table-cell;
-    vertical-align : middle;
-    height : 21vh; 
-    width : 31vw; 
-    margin-left : 1.5vw; 
-    float : left;
+    display: table-cell;
+    vertical-align: middle;
+    height: 21vh;
+    width: 34vw;
+    margin-left: 1.5vw;
+    float: left;
 }
 
 #middleText {
     color: white;
     text-align: left;
-    margin : auto;
-    display : table-cell;
-    vertical-align : middle;
-    height : 21vh; 
-    width : 39vw; 
-    margin-right : 1.5vw; 
-    float : right;
-    font-size: 10vw;
+    margin: auto;
+    display: table-cell;
+    vertical-align: middle;
+    height: 21vh;
+    width: 39vw;
+    float: right;
+    font-size: 12vh;
 }
 
 #secondMiddle {
     color: white;
     font-size: 3vh;
     margin : auto;
-    height : 3vh;
+    height : 5vh;
     width : 76vw;
     text-align : center;
 }
@@ -111,18 +110,15 @@ body
     width: 5vh;
 }
 
-
-
 .footer-col
-{
-    
+{    
     border-color: green;
     display: inline-block;
-    height : 14vh;
-    margin-right: 1vw;
-    margin-left: 1vw;
+    height: 14vh;
+    margin-right: 2vw;
+    margin-left: 2vw;
     vertical-align: top;
-    width : 30vw;
+    width: 30vw;
 }
 .footer-col img
 {
@@ -160,3 +156,9 @@ body
     height : 15vh;
     text-align: center;
 }
+.first
+{
+    border-bottom : solid;
+    border-width : 0.1vh;
+}
+
