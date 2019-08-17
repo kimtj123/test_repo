@@ -2,7 +2,10 @@ body
 {
     background-color: skyblue;    
 }
-
+#bigSymbol
+{
+    width: 15vw;
+}
 #middle {
     border : solid;
     height : 40vh;
@@ -18,11 +21,16 @@ body
     width : 76vw;
 }
 
-#middleSym {
+#middleSym
+{
     border : solid;
     margin : auto;
     display : table-cell;
     vertical-align : middle;
+    height : 21vh; 
+    width : 35vw; 
+    margin-left : 1.5vw; 
+    float : left;
 }
 
 #middleText {
@@ -30,6 +38,11 @@ body
     margin : auto;
     display : table-cell;
     vertical-align : middle;
+    height : 21vh; 
+    width : 35vw; 
+    margin-right : 1.5vw; 
+    float : right;
+    font-size: 10vw;
 }
 
 #secondMiddle {
