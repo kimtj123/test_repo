@@ -2,13 +2,52 @@ body
 {
     background-color: skyblue;    
 }
-#body
-{
-    border: solid;
-    height: 40vh;
+
+#middle {
+    border : solid;
+    height : 40vh;
     margin : auto;
-    width: 80vw;
+    width : 80vw;
+    text-align : center;
 }
+
+#firstMiddle {
+    border : solid;
+    margin : auto;
+    height : 24.5vh;
+    width : 76vw;
+}
+
+#middleSym {
+    border : solid;
+    margin : auto;
+    display : table-cell;
+    vertical-align : middle;
+}
+
+#middleText {
+    border : solid;
+    margin : auto;
+    display : table-cell;
+    vertical-align : middle;
+}
+
+#secondMiddle {
+    border : solid;
+    margin : auto;
+    height : 3vh;
+    width : 76vw;
+    text-align : center;
+}
+
+#thirdMiddle {
+    border : solid;
+    margin : auto;
+    height : 5.5vh;
+    width : 76vw;
+    text-align : center;
+}
+
 #currentTime p
 {
     color: white;
