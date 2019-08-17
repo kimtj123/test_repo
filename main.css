@@ -2,12 +2,11 @@ body
 {
     background-color: skyblue;    
 }
-#bigSymbol
-{
-    width: 15vw;
+#bigSymbol {
+    width: 10vw;
 }
+
 #middle {
-    border : solid;
     height : 40vh;
     margin : auto;
     width : 80vw;
@@ -15,38 +14,37 @@ body
 }
 
 #firstMiddle {
-    border : solid;
     margin : auto;
     height : 24.5vh;
     width : 76vw;
 }
 
-#middleSym
-{
-    border : solid;
-    margin : auto;
+#middleSym {
+    text-align: right;
     display : table-cell;
     vertical-align : middle;
     height : 21vh; 
-    width : 35vw; 
+    width : 31vw; 
     margin-left : 1.5vw; 
     float : left;
 }
 
 #middleText {
-    border : solid;
+    color: white;
+    text-align: left;
     margin : auto;
     display : table-cell;
     vertical-align : middle;
     height : 21vh; 
-    width : 35vw; 
+    width : 39vw; 
     margin-right : 1.5vw; 
     float : right;
     font-size: 10vw;
 }
 
 #secondMiddle {
-    border : solid;
+    color: white;
+    font-size: 3vh;
     margin : auto;
     height : 3vh;
     width : 76vw;
@@ -54,7 +52,8 @@ body
 }
 
 #thirdMiddle {
-    border : solid;
+    color: white;
+    font-size:3vh;
     margin : auto;
     height : 5.5vh;
     width : 76vw;
@@ -70,14 +69,21 @@ body
 }
 #footer
 {
-    border: solid;
+    border-radius: 20px;
     height: 30vh;
     margin : auto;
     width: 80vw;
+    background-color: rgba(0,0,0,0.2);
 }
+
+.transparent8 { zoom: 1; /* ie 5,6,7 bug fix */ 
+    filter: alpha(opacity=80); 
+    opacity: 0.8; 
+}
+
 #header
 {
-    border: solid;
+    
     height: 20vh;
     margin : auto;
     width: 80vw;
@@ -109,7 +115,7 @@ body
 
 .footer-col
 {
-    border: solid;
+    
     border-color: green;
     display: inline-block;
     height : 14vh;
@@ -148,7 +154,7 @@ body
 
 .footer-row
 {
-    border: solid;
+    
     border-color: white;
     color: white;
     height : 15vh;
