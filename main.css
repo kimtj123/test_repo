@@ -1,14 +1,6 @@
 body
 {
-    background-color: skyblue;
-}
-
-#header
-{
-    border: solid;
-    height: 20vh;
-    margin : auto;
-    width: 80vw;
+    background-color: skyblue;    
 }
 #body
 {
@@ -17,10 +9,96 @@ body
     margin : auto;
     width: 80vw;
 }
+#currentTime p
+{
+    color: white;
+    text-align: center;
+    margin-top: 0;
+    font-size: 3vh;    
+}
 #footer
 {
     border: solid;
     height: 30vh;
     margin : auto;
     width: 80vw;
+}
+#header
+{
+    border: solid;
+    height: 20vh;
+    margin : auto;
+    width: 80vw;
+}
+#location
+{
+    text-align: center;
+}
+#location img
+{
+    display: inline-block;
+    width: 5vh;
+}
+#location p
+{
+    color: white;
+    display: inline-block;
+    font-size: 6vh;
+    margin-top: 0;
+    margin-bottom: 1vh;
+}
+#refresh img
+{
+    margin-left: 5vw;
+    width: 5vh;
+}
+
+
+
+.footer-col
+{
+    border: solid;
+    border-color: green;
+    display: inline-block;
+    height : 14vh;
+    margin-right: 1vw;
+    margin-left: 1vw;
+    vertical-align: top;
+    width : 30vw;
+}
+.footer-col img
+{
+    display: inline-block;
+    margin-bottom: 8vh;
+    margin-top: 2vh;
+    vertical-align: middle;
+    width : 9vh;
+}
+.footer-col-left
+{
+    float:left;
+}
+.footer-info
+{
+    display: inline-block;
+    font-size: 4vh;
+    vertical-align: top;
+}
+.footer-time
+{
+    display: inline-block;
+    margin-top: 5vh;
+    font-size: 3vh;
+    float: right;
+    vertical-align: top;
+    margin-left: 2.5vw;
+}
+
+.footer-row
+{
+    border: solid;
+    border-color: white;
+    color: white;
+    height : 15vh;
+    text-align: center;
 }

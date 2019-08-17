@@ -9,17 +9,55 @@
 </head>
 
 <body>
-    <div style="height: 3vh;">
-
-    </div>
+    <div style="height: 3vh;"></div>
     <div id = 'header'>        
-        
+        <div id = 'refresh'>
+            <img src = "icons\refresh.png">
+        </div>
+        <div id = "location">
+            <img src="icons\mapMarker.png">
+            <p>남양주시</p>
+        </div>  
+        <div id = "currentTime">
+            <p>8월 17일 토요일 오전 12:38</p>
+        </div>      
     </div>
     <div id = 'body'>
 
     </div>
     <div id = 'footer'>
-
+        <div class = 'footer-row'>  <!--2개의 하위 div를 수직으로 배치하자.-->
+                <div class = 'footer-col'>
+                    <div class = 'footer-col-left'>
+                        <img src = "icons\sunrise.png">
+                        <p class = 'footer-info'>일출</p>
+                    </div>
+                    <p class = 'footer-time'>오전 6:02</p>
+                </div> 
+                <div class = 'footer-col'>
+                    <div class = 'footer-col-left'>
+                        <img src = "icons\sunset.png">
+                        <p class = 'footer-info'>일몰</p>
+                    </div>
+                    <p class = 'footer-time'>오후 7:05</p>
+                </div> 
+        </div>
+        <div class = 'footer-row'>  <!--2개의 하위 div를 수직으로 배치하자.-->
+            <div class = 'footer-col'>
+                <div class = 'footer-col-left'>
+                    <img src = "icons\humidity.png">
+                    <p class = 'footer-info'>습도</p>
+                </div>
+                <p class = 'footer-time'>73%</p>
+            </div> 
+            <div class = 'footer-col'>
+                <div class = 'footer-col-left'>
+                    <img src = "icons\wind.jpg">
+                    <p class = 'footer-info'>바람</p>
+                </div>
+                <p class = 'footer-time'>6m/s</p>
+            </div> 
+    </div>
     </div>
 <script src="data.js"></script>
 <script src="logic.js"></script>
