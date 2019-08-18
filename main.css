@@ -2,24 +2,33 @@ body
 {
     background-color: skyblue;    
 }
-#bigSymbol {
+#bigSymbol 
+{
     width: 17vh;
 }
-
-#middle {
+#img-button 
+{
+    background:  no-repeat;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+#middle 
+{
     height : 40vh;
     margin : auto;
     width : 80vw;
     text-align : center;
 }
-
-#firstMiddle {
+#firstMiddle 
+{
     margin : auto;
     height : 24.5vh;
     width : 76vw;
 }
 
-#middleSym {    
+#middleSym 
+{    
     text-align: right;
     display: table-cell;
     vertical-align: middle;
@@ -29,7 +38,8 @@ body
     float: left;
 }
 
-#middleText {
+#middleText 
+{
     color: white;
     text-align: left;
     margin: auto;
@@ -41,7 +51,8 @@ body
     font-size: 12vh;
 }
 
-#secondMiddle {
+#secondMiddle 
+{
     color: white;
     font-size: 3vh;
     margin : auto;
@@ -50,7 +61,8 @@ body
     text-align : center;
 }
 
-#thirdMiddle {
+#thirdMiddle 
+{
     color: white;
     font-size:3vh;
     margin : auto;
@@ -75,7 +87,8 @@ body
     background-color: rgba(0,0,0,0.2);
 }
 
-.transparent8 { zoom: 1; /* ie 5,6,7 bug fix */ 
+.transparent8 
+{ zoom: 1; /* ie 5,6,7 bug fix */ 
     filter: alpha(opacity=80); 
     opacity: 0.8; 
 }
@@ -108,8 +121,13 @@ body
 {
     margin-left: 5vw;
     width: 5vh;
+    transition: .5s;
 }
 
+.img-button:hover 
+{
+    -webkit-transform: rotate(360deg);
+}
 .footer-col
 {    
     border-color: green;
