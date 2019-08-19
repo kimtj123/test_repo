@@ -19,7 +19,7 @@ var lat, lon, obj;
 function getLocation() {
 
     navigator.geolocation.getCurrentPosition(function(position) {
-        console.log('geoLocation');
+        
         lat = position.coords.latitude.toFixed(4);
         lon = position.coords.longitude.toFixed(4);
         refresh.onclick();
@@ -88,36 +88,6 @@ function setTime() {
 
 }
 
-/*refresh.onclick = function() {
-
-    let add = apiSource + "lat=" + lat + "&lon=" + lon + apiKey;
-
-    fetch(add).then(function(response) {
-        return response.json();
-    }).then(function(json) {
-        obj = json;
-    });
-
-    if (lat !== undefined) {
-        loc.innerHTML = obj.name + ', ' +obj.sys.country;
-        currentTime.innerHTML = setTime();
-        middleText.innerHTML = (obj.main.temp - 273.15).toFixed(0) + '°C';
-        secondMiddle.innerHTML = (obj.main.temp_max - 273.15) + '°C / ' + (obj.main.temp_min - 273.15) + '°C';
-        thirdMiddle.innerHTML = obj.weather[0].main;
-        sunrise.innerHTML = timeStamp(obj.sys.sunrise);
-        sunset.innerHTML = timeStamp(obj.sys.sunset);
-        humidity.innerHTML = obj.main.humidity + '%';
-        wind.innerHTML = obj.wind.speed + 'm/s';
-    };
-
-}
-
-navigator.geolocation.getCurrentPosition(function(position) {
-    lat = position.coords.latitude.toFixed(4);
-    lon = position.coords.longitude.toFixed(4);
-    refresh.onclick();
-});*/
-
 function convertButton() {
 
     var buttons = document.getElementsByClassName("degreeButtons");
@@ -145,22 +115,3 @@ convertButton();
 setInterval(function() {
     refresh.onclick();
 }, 60000);
-
-/*function success(position) {
-    lat = position.coords.latitude;
-    lon = position.coords.longitude;
-    refresh.onclick();
-}
-
-function fail() {
-    alert('위치 확인에 실패하였습니다.');
-}
-
-if (!!navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(success, fail);
-    setTimeout(function() {
-        refresh.onclick();
-    }, 3000)
-} else {
-    fail();
-}*/
