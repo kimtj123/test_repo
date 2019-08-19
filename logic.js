@@ -48,6 +48,9 @@ function infoUpdate() {
         sunset.innerHTML = timeStamp(obj.sys.sunset);
         humidity.innerHTML = obj.main.humidity + '%';
         wind.innerHTML = obj.wind.speed + 'm/s';
+
+        let imgURL = "http://openweathermap.org/img/wn/" + obj.weather[0].icon + "@2x.png";
+        document.getElementById('bigSymbol').src = imgURL;
     };
 
 }
