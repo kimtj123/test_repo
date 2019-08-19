@@ -14,10 +14,28 @@ const sunset = document.getElementsByClassName('footer-time')[1]; // 일몰
 const humidity = document.getElementsByClassName('footer-time')[2] // 습도
 const wind = document.getElementsByClassName('footer-time')[3] // 바람
 
-var lat, lon, obj;
+var lat;
+var lon;
+var obj;
+
+/* console.log(를)  각 함수에 찍어서 실행순서 확인
+ * geolocation이 <infoUpdate() -> 따로 독립시켜 함수화했습니다.>   보다 늦게 실행되서 위도 경도를 받지 못한 채 함수실행 -> 에러 400 발생
+ * gelocation을 함수화해서 infoupdate 내에서 실행하면 info보다 먼저 실행되서 변수값(lat,lon)이 정상적으로 할당됨
+ */
+
+
+
+function getLocation(){
+    navigator.geolocation.getCurrentPosition(function(position) {
+        console.log('geoLocation');
+        lat = position.coords.latitude.toFixed(4);
+        lon = position.coords.longitude.toFixed(4);
+        refresh.onclick();
+    });
+}
 
 function timeStamp(a) {
-
+    console.log('timeStamp');
     let date = new Date(a * 1000);
     let hours = date.getHours();
     let minutes = '' + date.getMinutes();
@@ -27,13 +45,14 @@ function timeStamp(a) {
     } else {
         return (hours - 12) + ':' + minutes + ' PM';
     };
-
 }
 
-refresh.onclick = function() {
-
+function infoUpdate() 
+{ 
+    console.log('infoUpdate')
     let add = apiSource + "lat=" + lat + "&lon=" + lon + apiKey;
 
+    getLocation();
     fetch(add).then(function(response) {
         return response.json();
     }).then(function(json) {
@@ -54,14 +73,8 @@ refresh.onclick = function() {
 
 }
 
-navigator.geolocation.getCurrentPosition(function(position) {
-    lat = position.coords.latitude.toFixed(4);
-    lon = position.coords.longitude.toFixed(4);
-    refresh.onclick();
-});
 
 function convertButton() {
-
     var buttons = document.getElementsByClassName("degreeButtons");
     
     buttons[0].onclick = function() {   
@@ -79,9 +92,16 @@ function convertButton() {
     };
 
 }
+refresh.onclick = infoUpdate; 
 
+console.log(lat)
+console.log(lon)
+infoUpdate();
 convertButton();
 
-setInterval(function() {
-    refresh.onclick();
-}, 600000);
+/*
+    setInterval(function()
+    {
+        refresh.onclick();
+    }, 600000);
+*/
