@@ -16,6 +16,43 @@ const wind = document.getElementsByClassName('footer-time')[3] // 바람
 
 var lat, lon, obj;
 
+function getLocation() {
+
+    navigator.geolocation.getCurrentPosition(function(position) {
+        console.log('geoLocation');
+        lat = position.coords.latitude.toFixed(4);
+        lon = position.coords.longitude.toFixed(4);
+        refresh.onclick();
+    });
+
+}
+
+function infoUpdate() {
+
+    let add = apiSource + "lat=" + lat + "&lon=" + lon + apiKey;
+
+    getLocation();
+    fetch(add).then(function(response) {
+        return response.json();
+    }).then(function(json) {
+        obj = json;
+    });
+
+    if (lat !== undefined) {
+        loc.innerHTML = obj.name + ', ' +obj.sys.country;
+        currentTime.innerHTML = setTime();
+        middleText.innerHTML = (obj.main.temp - 273.15).toFixed(0) + '°C';
+        secondMiddle.innerHTML = (obj.main.temp_max - 273.15) + '°C / ' + (obj.main.temp_min - 273.15) + '°C';
+        thirdMiddle.innerHTML = obj.weather[0].main;
+        sunrise.innerHTML = timeStamp(obj.sys.sunrise);
+        sunset.innerHTML = timeStamp(obj.sys.sunset);
+        humidity.innerHTML = obj.main.humidity + '%';
+        wind.innerHTML = obj.wind.speed + 'm/s';
+    };
+
+}
+
+// Unix 시간 변환
 function timeStamp(a) {
 
     let date = new Date(a * 1000);
@@ -30,7 +67,28 @@ function timeStamp(a) {
 
 }
 
-refresh.onclick = function() {
+function setTime() {
+
+    let d = new Date();
+    let a = d.getFullYear() + ' ' + (d.getMonth() + 1) + ' ' + d.getDate();
+    let b = '';
+    let c = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+    if (d.getMinutes() < 10) {
+        b = '0' + d.getMinutes();
+    } else {
+        b = d.getMinutes();
+    }
+
+    if (d.getHours() < 12) {
+        return c[d.getDay()] + ' ' + a + ' ' + d.getHours() + ':' + b + ' AM';
+    } else {
+        return c[d.getDay()] + ' ' + a + ' ' + (d.getHours() - 12) + ':' + b + ' PM';
+    }
+
+}
+
+/*refresh.onclick = function() {
 
     let add = apiSource + "lat=" + lat + "&lon=" + lon + apiKey;
 
@@ -42,7 +100,7 @@ refresh.onclick = function() {
 
     if (lat !== undefined) {
         loc.innerHTML = obj.name + ', ' +obj.sys.country;
-        currentTime.innerHTML = new Date();
+        currentTime.innerHTML = setTime();
         middleText.innerHTML = (obj.main.temp - 273.15).toFixed(0) + '°C';
         secondMiddle.innerHTML = (obj.main.temp_max - 273.15) + '°C / ' + (obj.main.temp_min - 273.15) + '°C';
         thirdMiddle.innerHTML = obj.weather[0].main;
@@ -58,7 +116,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
     lat = position.coords.latitude.toFixed(4);
     lon = position.coords.longitude.toFixed(4);
     refresh.onclick();
-});
+});*/
 
 function convertButton() {
 
@@ -80,8 +138,29 @@ function convertButton() {
 
 }
 
+refresh.onclick = infoUpdate;
+infoUpdate();
 convertButton();
 
 setInterval(function() {
     refresh.onclick();
-}, 600000);
+}, 60000);
+
+/*function success(position) {
+    lat = position.coords.latitude;
+    lon = position.coords.longitude;
+    refresh.onclick();
+}
+
+function fail() {
+    alert('위치 확인에 실패하였습니다.');
+}
+
+if (!!navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(success, fail);
+    setTimeout(function() {
+        refresh.onclick();
+    }, 3000)
+} else {
+    fail();
+}*/
