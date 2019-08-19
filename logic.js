@@ -1,55 +1,87 @@
 // API 관련 상수
-// http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=106e1f81e923f25c140ea3f6b963265a
-
 const apiKey = "&appid=106e1f81e923f25c140ea3f6b963265a";
 const apiSource = "https:\/\/api.openweathermap.org/data/2.5/weather?";
 
 // HTML ID,Class 관련 상수
-const refresh = document.getElementById('refresh'); // 새로고침 버튼
-const middleText = document.getElementById('middleText'); // 25℃
+const refresh = document.getElementById('img-button'); // 새로고침 버튼
+const loc = document.getElementById('location').children[1]; // 현재 위치
+const currentTime = document.getElementById('currentTime').children[0]; // 현재 시각
+const middleText = document.getElementById('middleText'); // 현재 온도
+const secondMiddle = document.getElementById('secondMiddle'); // 최저/최고 온도
+const thirdMiddle = document.getElementById('thirdMiddle'); // 날씨 상태
+const sunrise = document.getElementsByClassName('footer-time')[0]; // 일출
+const sunset = document.getElementsByClassName('footer-time')[1]; // 일몰
+const humidity = document.getElementsByClassName('footer-time')[2] // 습도
+const wind = document.getElementsByClassName('footer-time')[3] // 바람
 
-/*
-refresh.onclick= function()
-{
-    fetch(apiSource + "lat=35&lon=139" + apiKey).then(function(response)
-        { 
-            response.text().then(function(text)
-            {
-                let jsonToObj = JSON.parse(text);
-                let lon = jsonToObj.coord.lon; 
-                let lat = jsonToObj.coord.lat;
+var lat, lon, obj;
 
-                console.log(text);
-                console.log(jsonToObj);        
-                console.log(jsonToObj.coord);        
-                console.log(lon);
-                console.log(lat);
-            })
-        })
-    
-    navigator.geolocation.getCurrentPosition(function(position) {
-        console.log(JSON.stringify(position));
-        });
+function timeStamp(a) {
+
+    let date = new Date(a * 1000);
+    let hours = date.getHours();
+    let minutes = '' + date.getMinutes();
+
+    if (hours < 12) {
+        return hours + ':' + minutes + ' AM';
+    } else {
+        return (hours - 12) + ':' + minutes + ' PM';
+    };
+
 }
- */
 
-function convertButton()
-{
+refresh.onclick = function() {
+
+    let add = apiSource + "lat=" + lat + "&lon=" + lon + apiKey;
+
+    fetch(add).then(function(response) {
+        return response.json();
+    }).then(function(json) {
+        obj = json;
+    });
+
+    if (lat !== undefined) {
+        loc.innerHTML = obj.name + ', ' +obj.sys.country;
+        currentTime.innerHTML = new Date();
+        middleText.innerHTML = (obj.main.temp - 273.15).toFixed(0) + '°C';
+        secondMiddle.innerHTML = (obj.main.temp_max - 273.15) + '°C / ' + (obj.main.temp_min - 273.15) + '°C';
+        thirdMiddle.innerHTML = obj.weather[0].main;
+        sunrise.innerHTML = timeStamp(obj.sys.sunrise);
+        sunset.innerHTML = timeStamp(obj.sys.sunset);
+        humidity.innerHTML = obj.main.humidity + '%';
+        wind.innerHTML = obj.wind.speed + 'm/s';
+    };
+
+}
+
+navigator.geolocation.getCurrentPosition(function(position) {
+    lat = position.coords.latitude.toFixed(4);
+    lon = position.coords.longitude.toFixed(4);
+    refresh.onclick();
+});
+
+function convertButton() {
+
     var buttons = document.getElementsByClassName("degreeButtons");
     
-    buttons[0].onclick = function() 
-    {           
+    buttons[0].onclick = function() {   
         buttons[0].style.backgroundColor = "white"
         buttons[1].style.backgroundColor = "#e7e7e7"
+        middleText.innerHTML = (((obj.main.temp - 273.15) * (9/5)) + 32).toFixed(0) + '°F';
+        secondMiddle.innerHTML = (((obj.main.temp_max - 273.15) * (9 / 5)) + 32).toFixed(0)  + '°F / ' + (((obj.main.temp_min - 273.15) * (9 / 5)) + 32).toFixed(0) + '°F';
     };
 
-    buttons[1].onclick = function() 
-    {           
+    buttons[1].onclick = function() {           
         buttons[0].style.backgroundColor = "#e7e7e7"
         buttons[1].style.backgroundColor = "white"
+        middleText.innerHTML = (obj.main.temp - 273.15).toFixed(0) + '°C';
+        secondMiddle.innerHTML = (obj.main.temp_max - 273.15) + '°C / ' + (obj.main.temp_min - 273.15) + '°C';
     };
-       
-   
+
 }
 
 convertButton();
+
+setInterval(function() {
+    refresh.onclick();
+}, 600000);
