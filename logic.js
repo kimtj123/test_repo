@@ -16,27 +16,33 @@ const wind = document.getElementsByClassName('footer-time')[3] // 바람
 
 var lat, lon, obj;
 
-function getLocation() {
+// geoLocation이 빠르게 실행되는 이유는 상호호출로 인해 많은 수를 호출하기 때문
 
-    navigator.geolocation.getCurrentPosition(function(position) {
-        
-        lat = position.coords.latitude.toFixed(4);
-        lon = position.coords.longitude.toFixed(4);
-        refresh.onclick();
-    });
-
-}
 
 function infoUpdate() {
 
     let add = apiSource + "lat=" + lat + "&lon=" + lon + apiKey;
 
-    getLocation();
+    console.log('infoUpdate-lat : '+lat);
+    console.log('infoUpdate-lon : '+lon);
+
+    navigator.geolocation.watchPosition(function(position) {
+        
+        lat = position.coords.latitude.toFixed(4);
+        lon = position.coords.longitude.toFixed(4);
+        console.log('geolocation-lat : ' + lat);
+        console.log('geolocation-lon : ' + lon);
+        infoUpdate(); // 여기 위치하면 refresh가 미작동, 오류발생은 X
+    });
+
     fetch(add).then(function(response) {
         return response.json();
     }).then(function(json) {
+        console.log('fetch then : '+json)
         obj = json;
-    });
+    })
+
+    //console.log(obj) 첫 실행시 여기서 obj가 undefined 상태.
 
     if (lat !== undefined) {
         loc.innerHTML = obj.name + ', ' +obj.sys.country;
@@ -112,9 +118,10 @@ function convertButton() {
 }
 
 refresh.onclick = infoUpdate;
-infoUpdate();
 convertButton();
 
+infoUpdate();
+
 setInterval(function() {
-    refresh.onclick();
-}, 60000);
+    infoUpdate();
+}, 5000);
