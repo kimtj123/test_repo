@@ -13,6 +13,8 @@ const sunrise = document.getElementsByClassName('footer-time')[0]; // 일출
 const sunset = document.getElementsByClassName('footer-time')[1]; // 일몰
 const humidity = document.getElementsByClassName('footer-time')[2] // 습도
 const wind = document.getElementsByClassName('footer-time')[3] // 바람
+const convButton = document.getElementsByClassName('degreeButtons')[1].style.backgroundColor; // 전환 버튼
+
 
 var lat, lon, obj;
 
@@ -47,8 +49,17 @@ function infoUpdate() {
     if (lat !== undefined) {
         loc.innerHTML = obj.name + ', ' +obj.sys.country;
         currentTime.innerHTML = setTime();
-        middleText.innerHTML = (obj.main.temp - 273.15).toFixed(0) + '°C';
-        secondMiddle.innerHTML = (obj.main.temp_max - 273.15) + '°C / ' + (obj.main.temp_min - 273.15) + '°C';
+
+        if (convButton === 'white') {
+            middleText.innerHTML = (obj.main.temp - 273.15).toFixed(0) + '°C';
+            secondMiddle.innerHTML = (obj.main.temp_max - 273.15) + '°C / ' + (obj.main.temp_min - 273.15) + '°C';
+        } else if (convButton === 'rgb(231, 231, 231)') {
+            middleText.innerHTML = (((obj.main.temp - 273.15) * (9/5)) + 32).toFixed(0) + '°F';
+            secondMiddle.innerHTML = (((obj.main.temp_max - 273.15) * (9 / 5)) + 32).toFixed(0)  + '°F / ' + (((obj.main.temp_min - 273.15) * (9 / 5)) + 32).toFixed(0) + '°F';
+        }
+
+        //middleText.innerHTML = (obj.main.temp - 273.15).toFixed(0) + '°C';
+        //secondMiddle.innerHTML = (obj.main.temp_max - 273.15) + '°C / ' + (obj.main.temp_min - 273.15) + '°C';
         thirdMiddle.innerHTML = obj.weather[0].main;
         sunrise.innerHTML = timeStamp(obj.sys.sunrise);
         sunset.innerHTML = timeStamp(obj.sys.sunset);
